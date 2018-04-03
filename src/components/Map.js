@@ -21,20 +21,27 @@ class Map extends Component{
             map: map
         })
     }
-    
+
+
     render(){
-    const markers = this.props.makers || []
-    console.log(this.props)
+
+        const markers = this.props.markers.map((venue,i) => {
+            const marker = {
+                position: {
+                    lat: venue.location.lat,
+                    lng: venue.location.lng
+                }
+            }
+            return <Marker key={i} {...marker} />
+        })
         return(
             <GoogleMap
                 ref={this.mapLoaded.bind(this)}
                 onDragEnd={this.mapMoved.bind(this)}
                 defaultZoom={this.props.zoom}
                 defaultCenter={ this.props.center }>
-                    {markers.map((marker, index)=>(
-                        <Marker {...marker} />
-                    )
                 )}
+                { markers }
             </GoogleMap>
         )
     }

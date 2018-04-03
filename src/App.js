@@ -6,13 +6,23 @@ class App extends Component {
 
   render() {
     const location = {
-      lat: 40.7575285,
-      lng: -73.9884469
+      lat: 47.6062,
+      lng: -122.3321
     }
+    const markers = [ 
+      {
+        location: {
+          lat: 47.6062,
+          lng: -122.3321
+        }
+      }
+    ]
+
     return (
       <div>
         SKI CLIMB MAP
           <Map
+            markers = { markers }
             zoom={ 10 }
             center={ location }
             containerElement={<div style={{ height: `400px` }} />}
