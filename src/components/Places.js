@@ -35,17 +35,18 @@ class Places extends Component {
     constructor(props){
         super(props);
         this.state = {
-            places: null
+            places: null,
+            
         }
 
     }
 
-    componentWillMount(){
+    componentWillReceiveProps(){
         var lat = this.props.location.lat.toString();
         var lng = this.props.location.lng.toString();
         var location = lat + ',' + lng;
         utils.getVenues(location).then(function(venues){
-            console.log('api call',venues);            
+            console.log('api call',location);            
             return (
                 this.setState({
                     places: venues
