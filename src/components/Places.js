@@ -45,8 +45,7 @@ class Places extends Component {
         var lat = this.props.location.lat.toString();
         var lng = this.props.location.lng.toString();
         var location = lat + ',' + lng;
-        utils.getVenues(location).then(function(venues){
-            console.log('api call',location);            
+        utils.getVenues(location).then(function(venues){         
             return (
                 this.setState({
                     places: venues

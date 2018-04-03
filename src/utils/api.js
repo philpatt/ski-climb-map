@@ -1,4 +1,6 @@
 import axios from "axios";
+import { Marker } from 'react-google-maps';
+
 
 
 function getVenues(latlng){
@@ -10,4 +12,8 @@ function getVenues(latlng){
     })
 }
 
-export default { getVenues }
+function getMarkers(param){
+    console.log('getmarker param',param)
+}
+
+export default { getVenues}

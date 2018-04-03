@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps';
+import utils from '../utils/api';
 import Places from './Places';
+
+
+
+function ShowMarkers(props) {
+    console.log('showmarker',props.map)
+    return (
+        <div>hello</div>
+    )
+}
+
 
 class Map extends Component{
     constructor(props){
@@ -16,10 +27,9 @@ class Map extends Component{
         }
     }
 
-    mapMoved(latLng){
+    mapMoved(){
         // console.log('map latlng', map.getCenter);
-        console.log('map moved', this.state.map.getCenter().lat())
-        
+        console.log('map moved', this.state.map.getCenter())
         this.setState({
             center: 
                 {
@@ -29,36 +39,27 @@ class Map extends Component{
         })
     }
 
-    mapLoaded(map){      
+    mapLoaded(map){
+        console.log('maaap',map);      
         if (this.state.map != null)
             return 
         this.setState({
             map: map
         })
     }
-
-
     render(){
         console.log('this.state.center',this.state.center);
         console.log('this.props', this.props);
         
-        const markers = this.props.markers.map((venue,i) => {
-            const marker = {
-                position: {
-                    lat: venue.location.lat,
-                    lng: venue.location.lng
-                }
-            }
-            return <Marker key={i} {...marker} />
-        })
-        return(
+
+        return (
             <div>
                 <GoogleMap
                     ref={this.mapLoaded.bind(this)}
                     onDragEnd={this.mapMoved.bind(this)}
                     defaultZoom={this.props.zoom}
                     defaultCenter={ this.props.center }>
-                    { markers }
+                    <ShowMarkers map={this.state.map}/>
                 </GoogleMap>
                 
                 <Places 
