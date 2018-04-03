@@ -41,18 +41,18 @@ class Places extends Component {
 
     }
 
-    componentWillReceiveProps(){
-        var lat = this.props.location.lat.toString();
-        var lng = this.props.location.lng.toString();
-        var location = lat + ',' + lng;
-        utils.getVenues(location).then(function(venues){         
-            return (
-                this.setState({
-                    places: venues
-                })
-            )
-        }.bind(this));
-    }
+    // componentWillReceiveProps(){
+    //     var lat = this.props.location.lat.toString();
+    //     var lng = this.props.location.lng.toString();
+    //     var location = lat + ',' + lng;
+    //     utils.getVenues(location).then(function(venues){         
+    //         return (
+    //             this.setState({
+    //                 places: venues
+    //             })
+    //         )
+    //     }.bind(this));
+    // }
 
     render(){
         return(
