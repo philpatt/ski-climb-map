@@ -13,7 +13,7 @@ class App extends Component {
     }
   }
   render() {
-    console.log('whats on app',this.props)
+    // console.log('whats on app',this.props)
     const markers = [ 
       {
         location: {

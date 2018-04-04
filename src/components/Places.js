@@ -10,7 +10,7 @@ function ShowPlaces(props) {
         <ul>
             {places.map( (place) => {
                 return (
-                    <li 
+                    <li
                     key= {place.id}
                     >
                         <a>{place.name}</a>
@@ -21,7 +21,9 @@ function ShowPlaces(props) {
     )
 }
 
+
 function Loading(){
+    console.log('loading')
     return (
         <div>
             loading...
@@ -41,24 +43,16 @@ class Places extends Component {
 
     }
 
-    // componentWillReceiveProps(){
-    //     var lat = this.props.location.lat.toString();
-    //     var lng = this.props.location.lng.toString();
-    //     var location = lat + ',' + lng;
-    //     utils.getVenues(location).then(function(venues){         
-    //         return (
-    //             this.setState({
-    //                 places: venues
-    //             })
-    //         )
-    //     }.bind(this));
-    // }
-
     render(){
+        console.log('places props', this.props.places);
+        console.log('places state', this.state.places);
+
+        
+        
         return(
             <div>            
                 <h3>Here are some places in your area</h3>
-                {this.state.places === null ? <Loading /> : <ShowPlaces  places= {this.state.places}/>}
+                {this.props.places === undefined ? <Loading /> : <ShowPlaces  places= {this.props.places}/>}
             </div>
         )
     }
