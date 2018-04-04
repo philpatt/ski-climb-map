@@ -5,7 +5,7 @@ import utils from '../utils/api';
 
 function ShowPlaces(props) {
    var places = props.places.venues;  
-   console.log('show places', places); 
+
     return (
         <ul>
             {places.map( (place) => {
@@ -23,7 +23,7 @@ function ShowPlaces(props) {
 
 
 function Loading(){
-    console.log('loading')
+
     return (
         <div>
             loading...
@@ -44,8 +44,7 @@ class Places extends Component {
     }
 
     render(){
-        console.log('places props', this.props.places);
-        console.log('places state', this.state.places);
+
 
         
         

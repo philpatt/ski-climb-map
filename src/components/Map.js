@@ -5,16 +5,13 @@ import Places from './Places';
 
 
 
-function ShowMarkers(props) {
-    // console.log('showmarker',props)
-
-    var markers = props.markers;
-    // console.log('showmarker', markers)
+// function ShowMarkers(props) {
+//     var markers = props.markers;
     
-    return (
-        <div>hello</div>
-    )
-}
+//     return (
+//         <div>hello</div>
+//     )
+// }
 
 
 class Map extends Component{
@@ -23,13 +20,18 @@ class Map extends Component{
         this.state = {
             map: null,
             center: this.props.center,
-            // venues: ,
+            mapMoved: false,
         }
     }
 
     mapMoved(map){
+        console.log('mapmoved',this.state.mapMoved)
+        return (
+            this.setState({
+                mapMoved: true,
+            })
+        )
         // console.log('map latlng', map.getCenter);
-        console.log('mapmoved',map)
         // this.setState({
         //     center: 
         //         {
@@ -41,7 +43,6 @@ class Map extends Component{
 
     mapLoaded(map){
         console.log('mapLoaded',map);
-
         var lat = this.state.center.lat.toString();
         var lng = this.state.center.lng.toString();
         var location = lat + ',' + lng;
@@ -53,29 +54,19 @@ class Map extends Component{
                     return(
                         this.setState({
                             map: map,
-                            places: venues
+                            places: venues,
+                            mapMoved: false
                         })
                     )
                 }.bind(this))
             )
         }
         console.log('maploaded state update', this.state)        
-        
     }
-    componentDidMount(map){
-        if (this.state.map !== null) {
-            console.log('running?', map);
-            return (
-                this.setState({
-                    map: map
 
-                })
-            )
-        }
-    }
 
     render(){
-        console.log('this.state.center',this.state);
+        console.log('this.state',this.state);
         // console.log('this.props', this.props);
         
 
@@ -86,7 +77,6 @@ class Map extends Component{
                     onDragEnd={this.mapMoved.bind(this)}
                     defaultZoom={this.props.zoom}
                     defaultCenter={ this.props.center }>
-                    <ShowMarkers markers = {this.props.markers}/>
                 </GoogleMap>
      
                 <Places 
